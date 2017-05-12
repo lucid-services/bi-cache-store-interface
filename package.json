@@ -1,0 +1,30 @@
+{
+  "name": "bi-cache-store-interface",
+  "version": "1.0.0",
+  "description": "Interface for cache stores such as Memcached & Redis & Couchbase",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "export NODE_ENV=test; istanbul cover node_modules/mocha/bin/_mocha -- --recursive --ui tdd -R spec tests"
+  },
+  "testFramework": "mocha",
+  "keywords": [
+    "cache",
+    "store",
+    "interface",
+    "memcached",
+    "couchbase",
+    "redis",
+    "storage"
+  ],
+  "author": "Bohemia Interactive",
+  "private": false,
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.5.3",
+    "sinon-as-promised": "^4.0.0",
+    "sinon-chai": "^2.8.0",
+    "sinon": "^1.17.3"
+  }
+}
