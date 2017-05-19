@@ -22,9 +22,9 @@ describe('CacheStoreInterface', function() {
             CacheStoreInterface.call(this);
         };
 
-        InterfaceImplementation.prototype.get = Promise.method(function() {});
+        InterfaceImplementation.prototype.fetch = Promise.method(function() {});
         //required
-        //InterfaceImplementation.prototype.set = Promise.method(function() {});
+        //InterfaceImplementation.prototype.settle = Promise.method(function() {});
 
         expect(function() {
             new InterfaceImplementation();
@@ -37,8 +37,8 @@ describe('CacheStoreInterface', function() {
         };
 
         //required
-        //InterfaceImplementation.prototype.get = Promise.method(function() {});
-        InterfaceImplementation.prototype.set = Promise.method(function() {});
+        //InterfaceImplementation.prototype.fetch = Promise.method(function() {});
+        InterfaceImplementation.prototype.settle = Promise.method(function() {});
 
         expect(function() {
             new InterfaceImplementation();
@@ -50,8 +50,8 @@ describe('CacheStoreInterface', function() {
             CacheStoreInterface.call(this);
         };
 
-        InterfaceImplementation.prototype.get = function(key) {return Promise.resolve()};
-        InterfaceImplementation.prototype.set = function(key,data,ttl) {return Promise.resolve()};
+        InterfaceImplementation.prototype.fetch = function(key) {return Promise.resolve()};
+        InterfaceImplementation.prototype.settle = function(key,data,ttl) {return Promise.resolve()};
 
         expect(function() {
             new InterfaceImplementation();

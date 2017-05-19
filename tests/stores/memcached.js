@@ -26,7 +26,7 @@ describe('Memcached', function() {
         }).to.not.throw(Error);
     });
 
-    describe('get', function() {
+    describe('fetch', function() {
         before(function() {
             this.memcached = new MemcachedWrapper();
         });
@@ -43,24 +43,24 @@ describe('Memcached', function() {
             var data = {some: 'data'};
 
             this.memcachedGetStub.yields(null, data);
-            return this.memcached.get('key').should.become(data);
+            return this.memcached.fetch('key').should.become(data);
         });
 
         it('should return rejected promise with `NotFoundError`', function() {
 
             this.memcachedGetStub.yields(null, null);
-            return this.memcached.get('key').should.be.rejectedWith(MemcachedWrapper.NotFoundError);
+            return this.memcached.fetch('key').should.be.rejectedWith(MemcachedWrapper.NotFoundError);
         });
 
         it('should return rejected promise with an Error', function() {
 
             var err = new Error('rejection test');
             this.memcachedGetStub.yields(err, null);
-            return this.memcached.get('key').should.be.rejectedWith(err);
+            return this.memcached.fetch('key').should.be.rejectedWith(err);
         });
     });
 
-    describe('set', function() {
+    describe('settle', function() {
         before(function() {
             this.memcached = new MemcachedWrapper();
         });
@@ -80,7 +80,7 @@ describe('Memcached', function() {
             };
 
             this.memcachedSetStub.yields(null);
-            return this.memcached.set('key', data, 1).should.be.fulfilled.then(function() {
+            return this.memcached.settle('key', data, 1).should.be.fulfilled.then(function() {
                 self.memcachedSetStub.should.have.been.calledWith('key', data, 1);
             });
         });
@@ -89,7 +89,7 @@ describe('Memcached', function() {
 
             var err = new Error('rejection test');
             this.memcachedSetStub.yields(err, null);
-            return this.memcached.set('key', {some: 'data'}).should.be.rejectedWith(err);
+            return this.memcached.settle('key', {some: 'data'}).should.be.rejectedWith(err);
         });
     });
 });
