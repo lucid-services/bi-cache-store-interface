@@ -22,7 +22,12 @@ describe('CacheStoreInterface', function() {
             CacheStoreInterface.call(this);
         };
 
-        InterfaceImplementation.prototype.fetch = Promise.method(function() {});
+        InterfaceImplementation.prototype = Object.create(CacheStoreInterface.prototype);
+        InterfaceImplementation.prototype.constructor = InterfaceImplementation;
+
+        InterfaceImplementation.prototype.fetch = function() {return Promise.resolve()};
+        InterfaceImplementation.prototype.set = function(cb) {cb()};
+        InterfaceImplementation.prototype.get = function(cb) {cb()};
         //required
         //InterfaceImplementation.prototype.settle = Promise.method(function() {});
 
@@ -36,9 +41,14 @@ describe('CacheStoreInterface', function() {
             CacheStoreInterface.call(this);
         };
 
+        InterfaceImplementation.prototype = Object.create(CacheStoreInterface.prototype);
+        InterfaceImplementation.prototype.constructor = InterfaceImplementation;
+
         //required
         //InterfaceImplementation.prototype.fetch = Promise.method(function() {});
         InterfaceImplementation.prototype.settle = Promise.method(function() {});
+        InterfaceImplementation.prototype.set = function(cb) {cb()};
+        InterfaceImplementation.prototype.get = function(cb) {cb()};
 
         expect(function() {
             new InterfaceImplementation();
@@ -50,8 +60,14 @@ describe('CacheStoreInterface', function() {
             CacheStoreInterface.call(this);
         };
 
+        InterfaceImplementation.prototype = Object.create(CacheStoreInterface.prototype);
+        InterfaceImplementation.prototype.constructor = InterfaceImplementation;
+
+        InterfaceImplementation.prototype.inspectIntegrity = function() {return Promise.resolve()};
         InterfaceImplementation.prototype.fetch = function(key) {return Promise.resolve()};
         InterfaceImplementation.prototype.settle = function(key,data,ttl) {return Promise.resolve()};
+        InterfaceImplementation.prototype.set = function(cb) {cb()};
+        InterfaceImplementation.prototype.get = function(cb) {cb()};
 
         expect(function() {
             new InterfaceImplementation();
