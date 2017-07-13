@@ -63,6 +63,7 @@ describe('CacheStoreInterface', function() {
         InterfaceImplementation.prototype = Object.create(CacheStoreInterface.prototype);
         InterfaceImplementation.prototype.constructor = InterfaceImplementation;
 
+        InterfaceImplementation.prototype.inspectIntegrity = function() {return Promise.resolve()};
         InterfaceImplementation.prototype.fetch = function(key) {return Promise.resolve()};
         InterfaceImplementation.prototype.settle = function(key,data,ttl) {return Promise.resolve()};
         InterfaceImplementation.prototype.set = function(cb) {cb()};
