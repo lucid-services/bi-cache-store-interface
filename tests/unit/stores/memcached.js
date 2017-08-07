@@ -6,8 +6,8 @@ var Memcached      = require('memcached');
 
 global.Promise     = require('bluebird');
 
-var CacheStoreInterface = require('../../lib/index.js');
-var MemcachedWrapper    = require('../../lib/stores/memcached.js');
+var CacheStoreInterface = require('../../../lib/index.js');
+var MemcachedWrapper    = require('../../../lib/stores/memcached.js');
 
 //this makes sinon-as-promised available in sinon:
 require('sinon-as-promised');
@@ -22,13 +22,17 @@ describe('Memcached', function() {
 
     it('should not throw', function() {
         expect(function() {
-            new MemcachedWrapper();
+            new MemcachedWrapper('127.0.0.1:11211');
         }).to.not.throw(Error);
+    });
+
+    it('should be instanceof CacheStoreInterface', function() {
+        expect(new MemcachedWrapper('127.0.0.1:11211')).to.be.instanceof(CacheStoreInterface);
     });
 
     describe('fetch', function() {
         before(function() {
-            this.memcached = new MemcachedWrapper();
+            this.memcached = new MemcachedWrapper('127.0.0.1:11211');
         });
 
         beforeEach(function() {
@@ -62,7 +66,7 @@ describe('Memcached', function() {
 
     describe('settle', function() {
         before(function() {
-            this.memcached = new MemcachedWrapper();
+            this.memcached = new MemcachedWrapper('127.0.0.1:11211');
         });
 
         beforeEach(function() {
@@ -89,7 +93,28 @@ describe('Memcached', function() {
 
             var err = new Error('rejection test');
             this.memcachedSetStub.yields(err, null);
-            return this.memcached.settle('key', {some: 'data'}).should.be.rejectedWith(err);
+            return this.memcached.settle('key', {some: 'data'}, 0).should.be.rejectedWith(err);
         });
     });
+
+    describe('set', function() {
+        before(function() {
+            this.memcached = new MemcachedWrapper('127.0.0.1:11211');
+        });
+
+        it('should should not be equal to the equivalent CacheStoreInterface stub function', function() {
+            this.memcached.set.toString().should.not.be.equal(CacheStoreInterface.prototype.set.toString());
+        });
+    });
+
+    describe('get', function() {
+        before(function() {
+            this.memcached = new MemcachedWrapper('127.0.0.1:11211');
+        });
+
+        it('should should not be equal to the equivalent CacheStoreInterface stub function', function() {
+            this.memcached.get.toString().should.not.be.equal(CacheStoreInterface.prototype.get.toString());
+        });
+    });
+
 });
