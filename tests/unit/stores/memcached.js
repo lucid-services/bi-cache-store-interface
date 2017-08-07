@@ -26,6 +26,10 @@ describe('Memcached', function() {
         }).to.not.throw(Error);
     });
 
+    it('should be instanceof CacheStoreInterface', function() {
+        expect(new MemcachedWrapper('127.0.0.1:11211')).to.be.instanceof(CacheStoreInterface);
+    });
+
     describe('fetch', function() {
         before(function() {
             this.memcached = new MemcachedWrapper('127.0.0.1:11211');
@@ -89,7 +93,28 @@ describe('Memcached', function() {
 
             var err = new Error('rejection test');
             this.memcachedSetStub.yields(err, null);
-            return this.memcached.settle('key', {some: 'data'}).should.be.rejectedWith(err);
+            return this.memcached.settle('key', {some: 'data'}, 0).should.be.rejectedWith(err);
         });
     });
+
+    describe('set', function() {
+        before(function() {
+            this.memcached = new MemcachedWrapper('127.0.0.1:11211');
+        });
+
+        it('should should not be equal to the equivalent CacheStoreInterface stub function', function() {
+            this.memcached.set.toString().should.not.be.equal(CacheStoreInterface.prototype.set.toString());
+        });
+    });
+
+    describe('get', function() {
+        before(function() {
+            this.memcached = new MemcachedWrapper('127.0.0.1:11211');
+        });
+
+        it('should should not be equal to the equivalent CacheStoreInterface stub function', function() {
+            this.memcached.get.toString().should.not.be.equal(CacheStoreInterface.prototype.get.toString());
+        });
+    });
+
 });

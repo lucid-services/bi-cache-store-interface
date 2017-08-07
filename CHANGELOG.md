@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## FUTURE
 
 * [FIXED] if an attempt to initialize `Memcached` store with invalid arguments is made, the Memcached constructor should throw an Error
+* [FIXED] invalid multi-inheritance Memcached setup (EventEmitter interface was not part of Memcached prototype)
 
 ## 1.1.0
 

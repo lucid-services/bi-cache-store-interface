@@ -4,7 +4,7 @@
   "description": "Interface for cache stores such as Memcached & Redis & Couchbase",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "export NODE_ENV=test; istanbul cover node_modules/mocha/bin/_mocha -- --recursive --ui tdd -R spec tests"
+    "test": "export NODE_ENV=test; istanbul cover node_modules/mocha/bin/_mocha -- --recursive --ui tdd -t 5000 -R spec tests"
   },
   "testFramework": "mocha",
   "keywords": [
