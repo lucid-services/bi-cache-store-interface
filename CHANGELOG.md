@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## FUTURE
+
+* [FIXED] if an attempt to initialize `Memcached` store with invalid arguments is made, the Memcached constructor should throw an Error
+
 ## 1.1.0
 
 * [ADDED] `CacheStoreInterface` must implement `inspectIntegrity` method

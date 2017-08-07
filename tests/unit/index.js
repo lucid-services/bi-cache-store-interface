@@ -3,7 +3,7 @@ var chai           = require('chai');
 var sinonChai      = require("sinon-chai");
 var Promise        = require('bluebird');
 
-var CacheStoreInterface = require('../lib/index.js');
+var CacheStoreInterface = require('../../lib/index.js');
 
 var expect = chai.expect;
 
