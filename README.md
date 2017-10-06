@@ -1,18 +1,18 @@
-# storage interfaces
 
-## memcache
-Usage example (taken from /index.js):
-```js
-//requires etc.
-const Storage          = require('bi-cache-store-interface/lib/stores/memcached');
-/**
-* Storage({String | Array[String] hosts, Object memcached options (see: https://github.com/3rd-Eden/memcached#options)}
-*/
-const MemcachedStorage = new Storage(config.get('storage:memcached:hosts'), config.get('storage:memcached'));
+```javascript
+const CacheStoreInterface = require('bi-cache-store-interface');
+const MemcachedStore      = require('bi-cache-store-interface/lib/stores/memcached');
 
-const service = module.exports = new Service(config);
+const memcached = new MemcachedStore(["127.0.0.1:11211"], {
+    timeout: 5000,
+    idle: 30000,
+    retries: 1,
+    failures: 5,
+    retry: 30000,
+    failuresTimeout: 300000,
+    remove: false,
+    reconnect: 120000
+});
 
-const resourceMgr = service.resourceManager;
-resourceMgr.register('cache', MemcachedStorage);
-//...
+memcached instanceof CacheStoreInterface //true
 ```
