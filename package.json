@@ -16,6 +16,15 @@
     "redis",
     "storage"
   ],
+  "files": [
+      "CHANGELOG.md",
+      "lib",
+      "tests"
+  ],
+  "engines": {
+    "node": ">=4.0"
+  },
+  "license": "GPL-3.0",
   "author": "Bohemia Interactive",
   "private": false,
   "peerDependencies": {
