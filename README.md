@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/BohemiaInteractive/bi-cache-store-interface-sdk.svg?branch=master)](https://travis-ci.org/BohemiaInteractive/bi-cache-store-interface)  
 
 ```javascript
 const CacheStoreInterface = require('bi-cache-store-interface');
