@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## FUTURE
 
 * [ADDED] new `memjs` memcache provider
+* [CHANGED] changed project name
 
 ## 1.1.1
 

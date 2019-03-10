@@ -1,5 +1,5 @@
 {
-  "name": "bi-cache-store-interface",
+  "name": "serviser-cache-store-interface",
   "version": "1.1.1",
   "description": "Interface for cache stores such as Memcached & Redis & Couchbase",
   "main": "./lib/index.js",
@@ -26,7 +26,7 @@
     "node": ">=4.0"
   },
   "license": "GPL-3.0",
-  "author": "Bohemia Interactive",
+  "author": "fogine",
   "private": false,
   "peerDependencies": {
     "memcached": "2.2.*",

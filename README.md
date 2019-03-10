@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/BohemiaInteractive/bi-cache-store-interface.svg?branch=master)](https://travis-ci.org/BohemiaInteractive/bi-cache-store-interface)  
+[![Build Status](https://travis-ci.org/lucid-services/serviser-cache-store-interface.svg?branch=master)](https://travis-ci.org/lucid-services/serviser-cache-store-interface)  
 
 ```javascript
-const CacheStoreInterface = require('bi-cache-store-interface');
-const MemcachedStore      = require('bi-cache-store-interface/lib/stores/memcached');
+const CacheStoreInterface = require('serviser-cache-store-interface');
+const MemcachedStore      = require('serviser-cache-store-interface/lib/stores/memcached');
 
 const memcached = new MemcachedStore(["127.0.0.1:11211"], {
     timeout: 5000,
