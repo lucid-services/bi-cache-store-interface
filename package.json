@@ -1,6 +1,6 @@
 {
-  "name": "bi-cache-store-interface",
-  "version": "1.1.1",
+  "name": "serviser-cache-store-interface",
+  "version": "1.2.0",
   "description": "Interface for cache stores such as Memcached & Redis & Couchbase",
   "main": "./lib/index.js",
   "scripts": {
@@ -17,19 +17,20 @@
     "storage"
   ],
   "files": [
-      "CHANGELOG.md",
-      "README.md",
-      "lib",
-      "tests"
+    "CHANGELOG.md",
+    "README.md",
+    "lib",
+    "tests"
   ],
   "engines": {
     "node": ">=4.0"
   },
   "license": "GPL-3.0",
-  "author": "Bohemia Interactive",
+  "author": "fogine",
   "private": false,
   "peerDependencies": {
-    "memcached": "2.2.*"
+    "memcached": "2.2.*",
+    "memjs": "^1.2.0"
   },
   "devDependencies": {
     "bluebird": "^3.5.0",
@@ -37,6 +38,7 @@
     "chai-as-promised": "^5.3.0",
     "istanbul": "^0.4.3",
     "memcached": "^2.2.2",
+    "memjs": "^1.2.0",
     "mocha": "^2.5.3",
     "sinon": "^1.17.3",
     "sinon-as-promised": "^4.0.0",
